@@ -48,10 +48,25 @@
             playerStr = window.prompt("Choose: Rock, Paper or Scissors?");
             playerSelection = moveArray.indexOf(playerStr.toLowerCase());
             
+
+            console.log(playerSelection);
+            console.log(computerSelection);
             resultArray = playRound(playerSelection,computerSelection);
+
+            if (resultArray[1] >= 0) {
+                playerScore = playerScore + resultArray[1];
+                }
+            else {
+                computerScore = computerScore - resultArray[1]
+            }
             
+            console.log(resultArray[0]);
+            console.log(playerScore);
+            console.log(computerScore);
+        }        
     }
 
+    game();
 
 </script>
 
