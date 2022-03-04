@@ -40,10 +40,16 @@ var moveArray = ["Rock","Paper","Scissors"]
             
     const buttons = document.querySelectorAll('button');
 
+    let won = false
+
     buttons.forEach((button) => {
 
         // and for each one we add a 'click' listener
         button.addEventListener('click', (e) => {
+            
+            if (won == true) {
+                return 
+            }
 
             computerSelection = computerPlay();
 
@@ -54,12 +60,37 @@ var moveArray = ["Rock","Paper","Scissors"]
                 playerScore = playerScore + resultArray[1];
                 }
             else {
-                computerScore = computerScore - resultArray[1]
+                computerScore = computerScore - resultArray[1];
+            }
+
+            const display = document.querySelector('#resultDisplay');
+
+            
+
+            display.textContent = `${resultArray[0]}`;
+
+            if (Math.max(playerScore,computerScore)>=5) {
+                    won = true;
+                    const final = document.createElement('p');
+                        if (playerScore>computerScore){
+                            final.textContent = 'you won!';
+                        }
+                        else {
+                            final.textContent = 'Computer wins :/';
+                        }
+                        
+                    display.appendChild(final);                
+                return
             }
             
-            console.log(resultArray[0]);
-            console.log(playerScore);
-            console.log(computerScore);
+            const content = document.createElement('p');
+            content.textContent = `player score:${playerScore}`;
+            display.appendChild(content);
+
+            const contentComp = document.createElement('p');
+            contentComp.textContent= `computer score:${computerScore}`;
+            display.appendChild(contentComp);
+         
 
         });
       });
