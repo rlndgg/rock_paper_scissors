@@ -1,4 +1,4 @@
-var moveArray = ["rock","paper","scissors"]
+var moveArray = ["Rock","Paper","Scissors"]
 
     function computerPlay(){
     
@@ -25,24 +25,29 @@ var moveArray = ["rock","paper","scissors"]
         }
 
     }
-    let computerSelection
-    let playerSelection
-    let computerScore = 0
-    let playerScore = 0
+    let computerSelection;
+    let playerSelection;
+    let computerScore = 0;
+    let playerScore = 0;
 
-    function game(){
 
-        let resultArray
-        let playerStr
 
-        while (Math.max(playerScore,computerScore)<5) {
-            computerSelection = computerPlay();
-            playerStr = window.prompt("Choose: Rock, Paper or Scissors?");
-            playerSelection = moveArray.indexOf(playerStr.toLowerCase());
+        let resultArray = new Array(2);
+
+
             
+            
+            
+    const buttons = document.querySelectorAll('button');
 
-            console.log(playerSelection);
-            console.log(computerSelection);
+    buttons.forEach((button) => {
+
+        // and for each one we add a 'click' listener
+        button.addEventListener('click', (e) => {
+
+            computerSelection = computerPlay();
+
+            playerSelection = moveArray.indexOf(e.target.textContent);
             resultArray = playRound(playerSelection,computerSelection);
 
             if (resultArray[1] >= 0) {
@@ -55,7 +60,14 @@ var moveArray = ["rock","paper","scissors"]
             console.log(resultArray[0]);
             console.log(playerScore);
             console.log(computerScore);
-        }        
-    }
 
-    game();
+        });
+      });
+
+            
+
+
+          
+        
+
+
